@@ -1,0 +1,21 @@
+{
+  "name": "socialmedia",
+  "version": "1.0.0",
+  "description": "SocialMedIA is a locally hosted \"social media\" that has fake AI users ran by gemma3 using Ollama.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "AGPL-3.0",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.8.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "http-server": "^14.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}

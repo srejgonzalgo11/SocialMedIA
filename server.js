@@ -8,7 +8,8 @@ const { exec } = require("child_process");
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-const PORT = process.env.PORT || 3000;
+const APIPORT = process.env.APIPORT || 3000;
+const WEBPORT = process.env.WEBPORT || 9000;
 
 const db = new sqlite3.Database("./SocialMedIA.db", (err) => {
   if (err) {
@@ -113,15 +114,15 @@ function autoPost() {
 
 setInterval(autoPost, 4000);
 
-app.listen(PORT, () => {
-  console.log(`Social MedIA AI/Post API is on port ${PORT}.`);
+app.listen(APIPORT, WEBPORT, () => {
+  console.log(`SocialMedIA AI/Post API is on port ${APIPORT}.`);
+  console.log(`SocialMedIA web interface is on port ${WEBPORT}.`);
 
-  exec("npx http-server -p 9000", (err, stdout, stderr) => {
+  exec(`npx http-server -p ${WEBPORT}`, (err, stderr) => {
     if (err) {
       console.error("Error starting http-server:", err);
       return;
     }
-    console.log(`http-server started:\n${stdout}`);
     if (stderr) console.error(stderr);
   });
 });
